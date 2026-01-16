@@ -3,88 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Swimming Fish Illusion</title>
+<title>Pop the Fish Game</title>
+
 <style>
-    /* Full-page water background */
-    body {
-        margin: 0;
-        height: 100vh;
-        overflow: hidden;
-        background: linear-gradient(to bottom, #00c6ff, #0072ff);
-        position: relative;
-    }
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #00c6ff, #0072ff);
+    font-family: Arial, sans-serif;
+    cursor: crosshair;
+}
 
-    /* Fish container */
-    .fish {
-        position: absolute;
-        width: 80px;
-        height: 40px;
-        background: orange;
-        border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-        animation: swim 10s linear infinite;
-    }
+/* Scoreboard */
+#score {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    color: white;
+    z-index: 10;
+}
 
-    /* Fish tail */
-    .fish::after {
-        content: '';
-        position: absolute;
-        right: -20px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 20px;
-        height: 20px;
-        background: orange;
-        clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-        animation: tail 0.5s ease-in-out infinite alternate;
-    }
+/* Fish */
+.fish {
+    position: absolute;
+    width: 70px;
+    height: 35px;
+    background: orange;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    animation: swim linear forwards;
+}
 
-    /* Swim animation */
-    @keyframes swim {
-        0% {
-            transform: translate(-100px, 20vh) rotate(0deg);
-        }
-        25% {
-            transform: translate(80vw, 40vh) rotate(20deg);
-        }
-        50% {
-            transform: translate(60vw, 70vh) rotate(-20deg);
-        }
-        75% {
-            transform: translate(10vw, 50vh) rotate(10deg);
-        }
-        100% {
-            transform: translate(-100px, 20vh) rotate(0deg);
-        }
-    }
+/* Tail */
+.fish::after {
+    content: '';
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background: inherit;
+    clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+    animation: tail 0.4s ease-in-out infinite alternate;
+}
 
-    /* Tail wiggle */
-    @keyframes tail {
-        0% { transform: translateY(-50%) rotate(0deg); }
-        100% { transform: translateY(-50%) rotate(20deg); }
+/* Swim animation */
+@keyframes swim {
+    from {
+        transform: translateX(-100px);
     }
-
-    /* Optional: multiple fish */
-    .fish:nth-child(2) {
-        animation-duration: 12s;
-        background: #ff8c00;
-        width: 60px;
-        height: 30px;
+    to {
+        transform: translateX(110vw);
     }
+}
 
-    .fish:nth-child(3) {
-        animation-duration: 14s;
-        background: #ffa500;
-        width: 70px;
-        height: 35px;
+@keyframes tail {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(25deg); }
+}
+
+/* Pop effect */
+.pop {
+    animation: pop 0.3s forwards;
+}
+
+@keyframes pop {
+    to {
+        transform: scale(1.8);
+        opacity: 0;
     }
-
+}
 </style>
 </head>
+
 <body>
 
-<div class="fish"></div>
-<div class="fish"></div>
-<div class="fish"></div>
+<div id="score">Score: 0</div>
+
+<script>
+let score = 0;
+
+function createFish() {
+    const fish = document.createElement('div');
+    fish.className = 'fish';
+
+    // Random size
+    const size = Math.random() * 30 + 40;
+    fish.style.width = size + 'px';
+    fish.style.height = size / 2 + 'px';
+
+    // Random vertical position
+    fish.style.top = Math.random() * 80 + 'vh';
+
+    // Random color
+    const colors = ['orange', '#ff8c00', '#ffa500', '#ff6f00'];
+    fish.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    // Random speed
+    const duration = Math.random() * 5 + 5;
+    fish.style.animationDuration = duration + 's';
+
+    // Pop on click
+    fish.addEventListener('click', () => {
+        score++;
+        document.getElementById('score').textContent = 'Score: ' + score;
+        fish.classList.add('pop');
+        setTimeout(() => fish.remove(), 300);
+    });
+
+    document.body.appendChild(fish);
+
+    // Remove fish after swim
+    setTimeout(() => fish.remove(), duration * 1000);
+}
+
+// Spawn fish regularly
+setInterval(createFish, 800);
+</script>
 
 </body>
 </html>
