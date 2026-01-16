@@ -1,0 +1,58 @@
+<!-- python -m http.server 8000 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Contact Us | Omega Nexus</title>
+    <link rel="stylesheet" href="/html/assets/styles.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo"><a href="Home.html"><img src="images/c844e187-22bc-4278-b425-f87bc7a3edfc.jpeg" alt="Omega Nexus Logo"></a></div>
+        <div class="nav-links">
+            <a href="Home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="career.html">Career</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</header>
+
+<section>
+     <h2>Contact Us</h2>  <!-- onsubmit="return SMTP()" -->
+    <form  method="post" enctype="text/plain"> <!-- action="mailto:swathi.muthiyam.cholkar@gmail.com" -->
+        <!-- <label>Name</label><br> -->
+        <input type="text" name="name" placeholder="Your Name" required><br><br>
+
+        <!-- <label>Email</label><br> -->
+        <input type="email" name="email" placeholder="Your Email" required><br><br>
+
+        <!-- <label>Message</label><br> -->
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br><br>
+         <button onclick="SMTP()">Send Email</button>
+        <!-- <button type="submit" class="btn">Send Message</button> -->
+    </form>
+</section>
+
+<footer>
+    &copy; 2026 Omega Nexus.
+</footer>
+
+<!-- <script >
+    document.querySelector('.hamburger').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('active');
+    });
+</script> -->
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> -->
+<script src="assets/scripts.js"></script>
+</body>
+</html>

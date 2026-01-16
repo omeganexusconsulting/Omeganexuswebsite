@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swimming Fish Illusion</title>
+<style>
+    /* Full-page water background */
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(to bottom, #00c6ff, #0072ff);
+        position: relative;
+    }
+
+    /* Fish container */
+    .fish {
+        position: absolute;
+        width: 80px;
+        height: 40px;
+        background: orange;
+        border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+        animation: swim 10s linear infinite;
+    }
+
+    /* Fish tail */
+    .fish::after {
+        content: '';
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        background: orange;
+        clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+        animation: tail 0.5s ease-in-out infinite alternate;
+    }
+
+    /* Swim animation */
+    @keyframes swim {
+        0% {
+            transform: translate(-100px, 20vh) rotate(0deg);
+        }
+        25% {
+            transform: translate(80vw, 40vh) rotate(20deg);
+        }
+        50% {
+            transform: translate(60vw, 70vh) rotate(-20deg);
+        }
+        75% {
+            transform: translate(10vw, 50vh) rotate(10deg);
+        }
+        100% {
+            transform: translate(-100px, 20vh) rotate(0deg);
+        }
+    }
+
+    /* Tail wiggle */
+    @keyframes tail {
+        0% { transform: translateY(-50%) rotate(0deg); }
+        100% { transform: translateY(-50%) rotate(20deg); }
+    }
+
+    /* Optional: multiple fish */
+    .fish:nth-child(2) {
+        animation-duration: 12s;
+        background: #ff8c00;
+        width: 60px;
+        height: 30px;
+    }
+
+    .fish:nth-child(3) {
+        animation-duration: 14s;
+        background: #ffa500;
+        width: 70px;
+        height: 35px;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="fish"></div>
+<div class="fish"></div>
+<div class="fish"></div>
+
+</body>
+</html>

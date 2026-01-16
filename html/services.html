@@ -1,0 +1,74 @@
+<!-- python -m http.server 8000 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Services | Omega Nexus</title>
+    <link rel="stylesheet" href="/html/assets/styles.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo"><a href="Home.html"><img src="images/c844e187-22bc-4278-b425-f87bc7a3edfc.jpeg" alt="Omega Nexus Logo"></a></div>
+        <div class="nav-links">
+            <a href="Home.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="career.html">Career</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</header>
+
+<section class="services-section">
+  <div class="services-intro">
+      <h2>Our IT Consulting & Services</h2>
+      <p>At Omega Nexus, we provide comprehensive IT consulting and services to help businesses leverage technology for growth and efficiency. Our expert team delivers tailored solutions that drive innovation and secure your digital future.</p>
+  </div>
+  <div class="services-grid">
+      <div class="card">
+          <h3>IT Strategy & Consulting</h3>
+          <p>We help you develop a robust IT strategy aligned with your business goals. From digital transformation to technology roadmap planning, our consultants provide expert guidance to optimize your IT infrastructure.</p>
+      </div>
+      <div class="card">
+          <h3>Software Development</h3>
+          <p>Custom software solutions tailored to your needs. We build scalable, secure applications using modern technologies like cloud platforms, AI, and agile development methodologies.</p>
+      </div>
+      <div class="card">
+          <h3>Cloud Solutions</h3>
+          <p>Migrate to the cloud with confidence. We offer cloud consulting, migration services, and management for AWS, Azure, and Google Cloud, ensuring scalability, security, and cost-efficiency.</p>
+      </div>
+      <div class="card">
+          <h3>Cybersecurity</h3>
+          <p>Protect your business from cyber threats. Our cybersecurity services include risk assessments, threat detection, compliance audits, and implementation of advanced security measures.</p>
+      </div>
+      <div class="card">
+          <h3>IT Support & Maintenance</h3>
+          <p>Reliable IT support to keep your systems running smoothly. We provide 24/7 monitoring, helpdesk services, system maintenance, and proactive issue resolution.</p>
+      </div>
+      <div class="card">
+          <h3>Data Analytics & BI</h3>
+          <p>Unlock insights from your data. We implement business intelligence solutions, data warehousing, and analytics platforms to help you make data-driven decisions.</p>
+      </div>
+  </div>
+</section>
+
+
+<footer>
+    &copy; 2026 Omega Nexus.
+</footer>
+
+<script>
+    document.querySelector('.hamburger').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>
